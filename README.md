@@ -35,7 +35,7 @@ This project started as a class assignment and is intentionally scoped small for
 
 ```bash
 git clone https://github.com/HasanAljaf/PatientDashboard.git
-cd <repo-name>
+cd patient-dashboard
 npm install
 ```
 
