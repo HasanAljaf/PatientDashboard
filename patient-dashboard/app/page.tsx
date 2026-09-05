@@ -1,3 +1,12 @@
-export default function PatientDashboard() {
-  return <h1>Patient Dashboard</h1>;
+'use client';
+
+// Component Imports
+import PatientDashboard from './components/PatientDashboard';
+
+export default function PatientPortal() {
+  return (
+    <main>
+      <PatientDashboard />
+    </main>
+  );
 }
