@@ -1,5 +1,5 @@
 // Util Imports
-import { useState, useRef } from 'react';
+import { useState, useRef, useEffect } from 'react';
 
 // Shared Imports
 import { ToggleVisibility } from '../sharedPropTypes/ToggleVisibilityTypes';
@@ -27,13 +27,16 @@ export default function AppointmentManager({
   const [editingId, setEditingId] = useState<string | null>(null);
   const appointmentToEdit =
     appointments.find((a) => a.id === editingId) ?? null;
+  const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
 
   // Ref Variables
   const dialogRef = useRef<HTMLDialogElement | null>(null);
 
   // Event Handlers
-  // Receive data from form
+  // receive data from form
   function handleFormSubmit(appointmentObj: AppointmentFormObj) {
+    console.log('submitted object:', appointmentObj);
+    console.log('editingId at submit time:', editingId);
     if (appointmentToEdit === null) {
       // Add case
       setAppointments((a) => [
@@ -56,38 +59,40 @@ export default function AppointmentManager({
         )
       );
     }
-    if (dialogRef.current) {
-      dialogRef.current.close();
-    }
     handleModalClose();
   }
 
   function handleAddClick() {
     setEditingId(null);
-
     // open modal
-    if (dialogRef.current) {
-      dialogRef.current.showModal();
-    }
+    setIsModalOpen(true);
   }
 
   function handleEditClick(apptId: string) {
     setEditingId(apptId);
     // open modal
-    if (dialogRef.current) {
-      dialogRef.current.showModal();
-    }
+    setIsModalOpen(true);
   }
 
   // handed down to Modal as onClick
   function handleModalClose() {
     setEditingId(null);
-    console.log('Modal Cosing');
+    // close modal
+    setIsModalOpen(false);
   }
 
   function handleDeleteClick(apptId: string) {
     setAppointments((current) => current.filter((a) => a.id !== apptId));
   }
+
+  // Effects
+  useEffect(() => {
+    if (isModalOpen) {
+      dialogRef.current?.showModal();
+    } else {
+      dialogRef.current?.close();
+    }
+  }, [isModalOpen]);
 
   return (
     <div style={style}>
@@ -133,6 +138,7 @@ export default function AppointmentManager({
         <AppointmentForm
           appointmentToEdit={appointmentToEdit}
           onSubmit={handleFormSubmit}
+          isModalOpen={isModalOpen}
         />
       </Modal>
     </div>

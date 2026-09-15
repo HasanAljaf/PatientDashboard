@@ -8,11 +8,13 @@ import type { AppointmentFormObj } from '../sharedPropTypes/AppointmentTypes';
 type AppointmentFormProps = {
   appointmentToEdit: AppointmentFormObj | null;
   onSubmit: (appointmentObj: AppointmentFormObj) => void; // handleFormSubmit from AppointmentManager
+  isModalOpen: boolean;
 };
 
 export default function AppointmentForm({
   appointmentToEdit,
   onSubmit,
+  isModalOpen,
 }: AppointmentFormProps) {
   // Form Input States
   const [provider, setProvider] = useState<string>(
@@ -38,7 +40,7 @@ export default function AppointmentForm({
     setTime(appointmentToEdit?.time ?? ' ');
     setLocation(appointmentToEdit?.location ?? ' ');
     setStatus(appointmentToEdit?.status ?? ' ');
-  }, [appointmentToEdit]);
+  }, [appointmentToEdit, isModalOpen]);
 
   return (
     <form>
