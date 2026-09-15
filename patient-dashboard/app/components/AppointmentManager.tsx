@@ -35,8 +35,6 @@ export default function AppointmentManager({
   // Event Handlers
   // receive data from form
   function handleFormSubmit(appointmentObj: AppointmentFormObj) {
-    console.log('submitted object:', appointmentObj);
-    console.log('editingId at submit time:', editingId);
     if (appointmentToEdit === null) {
       // Add case
       setAppointments((a) => [
