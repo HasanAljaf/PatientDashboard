@@ -1,3 +1,4 @@
+// Util Imports
 import { useState } from 'react';
 
 // Component Imports
@@ -14,19 +15,27 @@ import { initialAppointments } from '../sampleData/SampleAppointments';
 import { initialMedications } from '../sampleData/SampleMedications';
 import { initialLabResults } from '../sampleData/SampleLabResults';
 
+// Shared Imports
+import type { Tab } from '../sharedPropTypes/TabTypes';
+import type { Patient } from '../sharedPropTypes/PatientTypes';
+import type { Appointment } from '../sharedPropTypes/AppointmentTypes';
+import type { Medication } from '../sharedPropTypes/MedicationTypes';
+
 export default function PatientDashboard() {
   // State Variables
-  const [activeTab, setActiveTab] = useState('Overview');
-  const [patient, setPatient] = useState(samplePatient);
-  const [appointments, setAppointments] = useState(initialAppointments);
-  const [medications, setMedications] = useState(initialMedications);
+  const [activeTab, setActiveTab] = useState<Tab>('Overview');
+  const [patient, setPatient] = useState<Patient>(samplePatient);
+  const [appointments, setAppointments] =
+    useState<Appointment[]>(initialAppointments);
+  const [medications, setMedications] =
+    useState<Medication[]>(initialMedications);
 
   const hideVisibility = {
     display: 'none',
   };
   return (
     <section>
-      <div>
+      <div className="bg-white text-black">
         <Profile
           patient={patient}
           style={activeTab !== 'Profile' ? hideVisibility : undefined}
@@ -38,6 +47,8 @@ export default function PatientDashboard() {
           style={activeTab !== 'Overview' ? hideVisibility : undefined}
         />
         <AppointmentManager
+          appointments={appointments}
+          setAppointments={setAppointments}
           style={activeTab !== 'Appointments' ? hideVisibility : undefined}
         />
         <MedicationManager

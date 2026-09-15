@@ -1,7 +1,7 @@
 // Shared Imports
-import { ToggleVisibilityProps } from '../sharedPropTypes/ToggleVisibilityTypes';
+import { ToggleVisibility } from '../sharedPropTypes/ToggleVisibilityTypes';
 
-export default function MedicationManager({ style }: ToggleVisibilityProps) {
+export default function MedicationManager({ style }: ToggleVisibility) {
   return (
     <div style={style}>
       <h1>Medication Manager</h1>

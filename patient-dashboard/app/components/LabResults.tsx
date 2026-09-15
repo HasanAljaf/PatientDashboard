@@ -1,7 +1,7 @@
 // Shared Imports
-import { ToggleVisibilityProps } from '../sharedPropTypes/ToggleVisibilityTypes';
+import { ToggleVisibility } from '../sharedPropTypes/ToggleVisibilityTypes';
 
-export default function LabResults({ style }: ToggleVisibilityProps) {
+export default function LabResults({ style }: ToggleVisibility) {
   return (
     <div style={style}>
       <h1>LabResutls</h1>
