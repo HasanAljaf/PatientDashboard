@@ -3,6 +3,7 @@ import type { Medication } from '../sharedPropTypes/MedicationTypes';
 
 export const initialMedications: Medication[] = [
   {
+    id: crypto.randomUUID(),
     name: 'Lisinopril',
     dosage: '10mg',
     frequency: 'Once daily',
@@ -11,6 +12,7 @@ export const initialMedications: Medication[] = [
     status: 'active',
   },
   {
+    id: crypto.randomUUID(),
     name: 'Metformin',
     dosage: '500mg',
     frequency: 'Twice daily',
@@ -19,6 +21,7 @@ export const initialMedications: Medication[] = [
     status: 'active',
   },
   {
+    id: crypto.randomUUID(),
     name: 'Amoxicillin',
     dosage: '250mg',
     frequency: 'Three times daily',

@@ -17,22 +17,14 @@ export default function AppointmentForm({
   isModalOpen,
 }: AppointmentFormProps) {
   // Form Input States
-  const [provider, setProvider] = useState<string>(
-    appointmentToEdit?.provider ?? ' '
-  );
-  const [specialty, setSpecialty] = useState<string>(
-    appointmentToEdit?.specialty ?? ' '
-  );
-  const [date, setDate] = useState<string>(appointmentToEdit?.date ?? ' ');
-  const [time, setTime] = useState<string>(appointmentToEdit?.time ?? ' ');
-  const [location, setLocation] = useState<string>(
-    appointmentToEdit?.location ?? ' '
-  );
-  const [status, setStatus] = useState<string>(
-    appointmentToEdit?.status ?? ' '
-  );
+  const [provider, setProvider] = useState<string>(' ');
+  const [specialty, setSpecialty] = useState<string>(' ');
+  const [date, setDate] = useState<string>(' ');
+  const [time, setTime] = useState<string>(' ');
+  const [location, setLocation] = useState<string>(' ');
+  const [status, setStatus] = useState<string>(' ');
 
-  // useEffect hook - syncing appointmentToEdit with Form fields
+  // Effects - syncing appointmentToEdit with form fields
   useEffect(() => {
     setProvider(appointmentToEdit?.provider ?? ' ');
     setSpecialty(appointmentToEdit?.specialty ?? ' ');
@@ -45,10 +37,10 @@ export default function AppointmentForm({
   return (
     <form>
       {/* Form Heading */}
-      <h2>{appointmentToEdit === null ? 'Add' : 'Edit'} Appointment Form</h2>
+      <h2>Appointment Form</h2>
       <p>
-        Please fill out this form to{' '}
-        {appointmentToEdit === null ? 'Add' : 'Edit'} an appointment.
+        Fill out this form to {appointmentToEdit === null ? 'add' : 'edit'}{' '}
+        appointment.
       </p>
 
       {/* Field Grouping */}
@@ -56,6 +48,7 @@ export default function AppointmentForm({
         <legend>Appointment Information</legend>
 
         <label>
+          provider
           <input
             onChange={(e) => setProvider(e.target.value)}
             value={provider}
@@ -64,6 +57,7 @@ export default function AppointmentForm({
           />
         </label>
         <label>
+          speciality
           <input
             onChange={(e) => setSpecialty(e.target.value)}
             value={specialty}
@@ -72,6 +66,7 @@ export default function AppointmentForm({
           />
         </label>
         <label>
+          date
           <input
             onChange={(e) => setDate(e.target.value)}
             value={date}
@@ -80,6 +75,7 @@ export default function AppointmentForm({
           />
         </label>
         <label>
+          time
           <input
             onChange={(e) => setTime(e.target.value)}
             value={time}
@@ -88,6 +84,7 @@ export default function AppointmentForm({
           />
         </label>
         <label>
+          location
           <input
             onChange={(e) => setLocation(e.target.value)}
             value={location}
@@ -96,6 +93,7 @@ export default function AppointmentForm({
           />
         </label>
         <label>
+          status
           <input
             onChange={(e) => setStatus(e.target.value)}
             value={status}
@@ -104,14 +102,11 @@ export default function AppointmentForm({
           />
         </label>
 
+        {/* Form Submit */}
         <label>
           <input
             type="submit"
-            value={
-              appointmentToEdit === null
-                ? 'Add Appointment'
-                : 'Save Appointment'
-            }
+            value={appointmentToEdit === null ? 'Add' : 'Save'}
             onClick={(e) => {
               e.preventDefault();
               e.stopPropagation();

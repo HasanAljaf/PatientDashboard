@@ -25,18 +25,19 @@ export default function AppointmentManager({
 }: AppointmentManagerProps) {
   // State Variables
   const [editingId, setEditingId] = useState<string | null>(null);
-  const appointmentToEdit =
-    appointments.find((a) => a.id === editingId) ?? null;
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
 
   // Ref Variables
   const dialogRef = useRef<HTMLDialogElement | null>(null);
 
+  // Variables
+  const appointmentToEdit =
+    appointments.find((a) => a.id === editingId) ?? null;
+
   // Event Handlers
-  // receive data from form
   function handleFormSubmit(appointmentObj: AppointmentFormObj) {
     if (appointmentToEdit === null) {
-      // Add case
+      // add case
       setAppointments((a) => [
         ...a,
         {
@@ -45,7 +46,7 @@ export default function AppointmentManager({
         },
       ]);
     } else {
-      // Edit case
+      // edit case
       setAppointments((current) =>
         current.map((a) =>
           a.id === editingId
@@ -62,20 +63,17 @@ export default function AppointmentManager({
 
   function handleAddClick() {
     setEditingId(null);
-    // open modal
     setIsModalOpen(true);
   }
 
   function handleEditClick(apptId: string) {
     setEditingId(apptId);
-    // open modal
     setIsModalOpen(true);
   }
 
   // handed down to Modal as onClick
   function handleModalClose() {
     setEditingId(null);
-    // close modal
     setIsModalOpen(false);
   }
 
@@ -97,11 +95,9 @@ export default function AppointmentManager({
       <h1>Appointment Manager</h1>
       <table>
         {/* Title/Summary of the Table */}
-        {appointments.length > 0 ? (
-          <caption>Patient&apos;s Current Appointments</caption>
-        ) : (
-          <caption>Patient Has No Appointments</caption>
-        )}
+        <caption>
+          {appointments.length > 0 ? 'Current Appointments' : 'No Appointments'}
+        </caption>
 
         {/* Header Section (Columns Labels) */}
         {appointments.length > 0 ? (
@@ -137,7 +133,9 @@ export default function AppointmentManager({
           ))}
         </tbody>
       </table>
+
       <button onClick={handleAddClick}>Add Appointment</button>
+
       <Modal dialogRef={dialogRef} onClose={handleModalClose}>
         <AppointmentForm
           appointmentToEdit={appointmentToEdit}

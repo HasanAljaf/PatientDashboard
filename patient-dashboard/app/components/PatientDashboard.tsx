@@ -52,6 +52,8 @@ export default function PatientDashboard() {
           style={activeTab !== 'Appointments' ? hideVisibility : undefined}
         />
         <MedicationManager
+          medications={medications}
+          setMedications={setMedications}
           style={activeTab !== 'Medications' ? hideVisibility : undefined}
         />
         <LabResults
