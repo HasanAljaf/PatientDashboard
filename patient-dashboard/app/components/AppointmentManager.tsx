@@ -97,19 +97,25 @@ export default function AppointmentManager({
       <h1>Appointment Manager</h1>
       <table>
         {/* Title/Summary of the Table */}
-        <caption>Patient&apos;s Current Appointments</caption>
+        {appointments.length > 0 ? (
+          <caption>Patient&apos;s Current Appointments</caption>
+        ) : (
+          <caption>Patient Has No Appointments</caption>
+        )}
 
         {/* Header Section (Columns Labels) */}
-        <thead>
-          <tr>
-            <th>Provider</th>
-            <th>Specialty</th>
-            <th>Date</th>
-            <th>Time</th>
-            <th>Location</th>
-            <th>Status</th>
-          </tr>
-        </thead>
+        {appointments.length > 0 ? (
+          <thead>
+            <tr>
+              <th>Provider</th>
+              <th>Specialty</th>
+              <th>Date</th>
+              <th>Time</th>
+              <th>Location</th>
+              <th>Status</th>
+            </tr>
+          </thead>
+        ) : null}
 
         {/* Main Data Section */}
         <tbody>
