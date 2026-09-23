@@ -1,10 +1,9 @@
-type LabStatus = 'completed' | 'upcoming' | 'cancelled';
-
 export interface LabResult {
+  id: string;
   testName: string;
   date: string;
   result: string;
   value: string | null;
   referenceRange: string;
-  status: LabStatus;
+  status: string;
 }

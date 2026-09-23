@@ -14,10 +14,24 @@ top, not a full reinvention of Tailwind's system.
 | Success (status)     | `status-success`    | `#639922` | "completed" appointment/med status  |
 | Warning (status)     | `status-warning`    | `#BA7517` | "upcoming" or pending status        |
 | Danger (status)      | `status-danger`     | `#A32D2D` | "cancelled" status, delete actions  |
+| Success text         | `status-success-text` | `#3F6212` | text on success badges            |
+| Warning text         | `status-warning-text` | `#8A5410` | text on warning badges            |
 
 **Usage rule:** one accent color (teal) for primary actions (buttons, active
 nav icon, links). Status colors are reserved for meaning (appointment/
 medication status badges) — never used decoratively.
+
+**Badge text rule:** at badge size (`text-xs`), the base success and warning
+colors fall below the WCAG AA minimum of 4.5:1 against their own tinted
+background (about 3.0:1 and 3.2:1). Badge text therefore uses the darker
+`-text` shades, and the base color is used for the tint only. Danger passes
+as-is (about 5.8:1), so it has no separate text shade.
+
+| Badge     | Background              | Text                  | Contrast |
+|-----------|-------------------------|-----------------------|----------|
+| Success   | `status-success` at 12% | `status-success-text` | ~6.2:1   |
+| Warning   | `status-warning` at 12% | `status-warning-text` | ~5.5:1   |
+| Danger    | `status-danger` at 12%  | `status-danger`       | ~5.8:1   |
 
 ### Tailwind config additions
 ```js
@@ -29,6 +43,8 @@ colors: {
   'status-success': '#639922',
   'status-warning': '#BA7517',
   'status-danger': '#A32D2D',
+  'status-success-text': '#3F6212',
+  'status-warning-text': '#8A5410',
 }
 ```
 
@@ -57,8 +73,9 @@ across components, not inventing a new one.
   padding (`p-6` for standalone cards, `p-4` for list items)
 - **Buttons:** teal fill for primary actions (Add, Save), neutral/outlined
   for secondary actions (Cancel), red-tinted for destructive actions (Delete)
-- **Status badges:** background = status color at ~10% opacity or the light
-  tint equivalent, text = solid status color, `rounded-full`, small text size
+- **Status badges:** background = status color at 12% opacity
+  (e.g. `bg-status-success/12`), text = the status's `-text` shade (see
+  Badge text rule above), `rounded-full`, `text-xs`, weight 500
 - **Bottom nav bar:** icon-only, active tab uses `brand-teal`, inactive tabs
   use `text-secondary`/gray
 

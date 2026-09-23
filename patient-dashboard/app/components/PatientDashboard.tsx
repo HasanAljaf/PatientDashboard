@@ -13,7 +13,7 @@ import LabResults from './LabResults';
 import { samplePatient } from '../sampleData/SamplePatient';
 import { initialAppointments } from '../sampleData/SampleAppointments';
 import { initialMedications } from '../sampleData/SampleMedications';
-import { initialLabResults } from '../sampleData/SampleLabResults';
+import { initialLabResults } from '../sampleData/SampleLabResults'; // passed down to LabResults & Overview
 
 // Shared Imports
 import type { Tab } from '../sharedPropTypes/TabTypes';

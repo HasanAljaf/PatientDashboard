@@ -3,6 +3,7 @@ import type { LabResult } from '../sharedPropTypes/LabResultTypes';
 
 export const initialLabResults: LabResult[] = [
   {
+    id: crypto.randomUUID(),
     testName: 'Complete Blood Count (CBC)',
     date: '2026-08-12',
     result: 'Normal',
@@ -11,6 +12,7 @@ export const initialLabResults: LabResult[] = [
     status: 'completed',
   },
   {
+    id: crypto.randomUUID(),
     testName: 'Lipid Panel',
     date: '2026-08-12',
     result: 'High Cholesterol',
@@ -19,6 +21,7 @@ export const initialLabResults: LabResult[] = [
     status: 'completed',
   },
   {
+    id: crypto.randomUUID(),
     testName: 'A1C',
     date: '2026-07-01',
     result: 'Normal',
@@ -27,6 +30,7 @@ export const initialLabResults: LabResult[] = [
     status: 'completed',
   },
   {
+    id: crypto.randomUUID(),
     testName: 'Vitamin D',
     date: '2026-09-10',
     result: 'Pending',
