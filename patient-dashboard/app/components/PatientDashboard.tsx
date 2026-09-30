@@ -58,6 +58,7 @@ export default function PatientDashboard() {
         />
         <LabResults
           style={activeTab !== 'LabResults' ? hideVisibility : undefined}
+          labResults={initialLabResults}
         />
       </div>
       <nav>

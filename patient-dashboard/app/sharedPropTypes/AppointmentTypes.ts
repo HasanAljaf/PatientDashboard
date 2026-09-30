@@ -1,3 +1,5 @@
+type ApptStatus = 'completed' | 'upcoming' | 'cancelled';
+
 export interface Appointment {
   id: string;
   provider: string;
