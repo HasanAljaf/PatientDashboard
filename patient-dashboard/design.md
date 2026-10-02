@@ -10,7 +10,7 @@ top, not a full reinvention of Tailwind's system.
 |---------------------|---------------------|-----------|-------------------------------------|
 | Primary accent       | `brand-teal`        | `#0F6E56` | `bg-brand-teal`, `text-brand-teal`  |
 | Accent (light tint)  | `brand-teal-50`     | `#E1F5EE` | badges, hover backgrounds           |
-| Neutral background   | `neutral-50`        | `#F1EFE8` | page/section backgrounds            |
+| Neutral background   | `surface`           | `#F1EFE8` | `bg-surface` — page/section backgrounds |
 | Success (status)     | `status-success`    | `#639922` | "completed" appointment/med status  |
 | Warning (status)     | `status-warning`    | `#BA7517` | "upcoming" or pending status        |
 | Danger (status)      | `status-danger`     | `#A32D2D` | "cancelled" status, delete actions  |
@@ -33,25 +33,28 @@ as-is (about 5.8:1), so it has no separate text shade.
 | Warning   | `status-warning` at 12% | `status-warning-text` | ~5.5:1   |
 | Danger    | `status-danger` at 12%  | `status-danger`       | ~5.8:1   |
 
-### Tailwind config additions
-```js
-// tailwind.config.js (or @theme block if using Tailwind v4)
-colors: {
-  'brand-teal': '#0F6E56',
-  'brand-teal-50': '#E1F5EE',
-  'neutral-50': '#F1EFE8',
-  'status-success': '#639922',
-  'status-warning': '#BA7517',
-  'status-danger': '#A32D2D',
-  'status-success-text': '#3F6212',
-  'status-warning-text': '#8A5410',
+### Tailwind v4 theme (lives in `app/globals.css`)
+```css
+@theme {
+  --color-brand-teal: #0f6e56;
+  --color-brand-teal-50: #e1f5ee;
+  --color-surface: #f1efe8;
+  --color-status-success: #639922;
+  --color-status-warning: #ba7517;
+  --color-status-danger: #a32d2d;
+  --color-status-success-text: #3f6212;
+  --color-status-warning-text: #8a5410;
 }
 ```
+The `--color-` prefix only registers the color; the class is whatever follows
+it (`--color-surface` → `bg-surface`). Avoid names Tailwind already ships
+(e.g. `neutral-50`), or the token silently overrides the built-in.
 
 ## Typography
 
 - **Font:** Inter (sans-serif only — no serif pairing needed)
-- **Setup:** `next/font/google` with Inter, applied at the root layout
+- **Setup:** `next/font/google` with Inter (`--font-inter`), mapped to
+  `--font-sans` in `globals.css` so the `font-sans` class uses it
 - **Scale:** rely on Tailwind's default type scale (`text-sm`, `text-base`,
   `text-lg`, `text-xl`) — no custom scale needed
 - **Weights used:** 400 (regular body text), 500 (labels, emphasis, headings)
@@ -77,7 +80,7 @@ across components, not inventing a new one.
   (e.g. `bg-status-success/12`), text = the status's `-text` shade (see
   Badge text rule above), `rounded-full`, `text-xs`, weight 500
 - **Bottom nav bar:** icon-only, active tab uses `brand-teal`, inactive tabs
-  use `text-secondary`/gray
+  use `text-gray-500`
 
 ## Notes
 
