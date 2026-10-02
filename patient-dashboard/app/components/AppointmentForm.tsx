@@ -2,18 +2,21 @@
 import { useState, useEffect } from 'react';
 
 // Shared Imports
-import type { AppointmentFormObj } from '../sharedPropTypes/AppointmentTypes';
+import type {
+  AppointmentFormObj,
+  ApptStatus,
+} from '../sharedPropTypes/AppointmentTypes';
 
 // Appointment Form Props
 type AppointmentFormProps = {
   appointmentToEdit: AppointmentFormObj | null;
-  onSubmit: (appointmentObj: AppointmentFormObj) => void; // handleFormSubmit from AppointmentManager
+  onSave: (appointmentObj: AppointmentFormObj) => void; // handleFormSubmit from AppointmentManager
   isModalOpen: boolean;
 };
 
 export default function AppointmentForm({
   appointmentToEdit,
-  onSubmit,
+  onSave,
   isModalOpen,
 }: AppointmentFormProps) {
   // Form Input States
@@ -22,20 +25,26 @@ export default function AppointmentForm({
   const [date, setDate] = useState<string>(' ');
   const [time, setTime] = useState<string>(' ');
   const [location, setLocation] = useState<string>(' ');
-  const [status, setStatus] = useState<string>(' ');
+  const [status, setStatus] = useState<ApptStatus>('upcoming');
 
   // Effects - syncing appointmentToEdit with form fields
   useEffect(() => {
-    setProvider(appointmentToEdit?.provider ?? ' ');
-    setSpecialty(appointmentToEdit?.specialty ?? ' ');
-    setDate(appointmentToEdit?.date ?? ' ');
-    setTime(appointmentToEdit?.time ?? ' ');
-    setLocation(appointmentToEdit?.location ?? ' ');
-    setStatus(appointmentToEdit?.status ?? ' ');
+    setProvider(appointmentToEdit?.provider ?? '');
+    setSpecialty(appointmentToEdit?.specialty ?? '');
+    setDate(appointmentToEdit?.date ?? '');
+    setTime(appointmentToEdit?.time ?? '');
+    setLocation(appointmentToEdit?.location ?? '');
+    setStatus(appointmentToEdit?.status ?? 'upcoming');
   }, [appointmentToEdit, isModalOpen]);
 
+  // Event Handlers
+  function handleSubmit(e: React.SubmitEvent<HTMLFormElement>) {
+    e.preventDefault(); // stop the page reload
+    onSave({ provider, specialty, date, time, location, status }); // call your prop
+  }
+
   return (
-    <form>
+    <form onSubmit={handleSubmit}>
       {/* Form Heading */}
       <h2>Appointment Form</h2>
       <p>
@@ -93,34 +102,23 @@ export default function AppointmentForm({
           />
         </label>
         <label>
-          status
-          <input
-            onChange={(e) => setStatus(e.target.value)}
+          Select status:
+          <select
+            name="status"
             value={status}
-            type="text"
-            required
-          />
+            onChange={(e) => setStatus(e.target.value as ApptStatus)}
+          >
+            <option value="upcoming">upcoming</option>
+            <option value="completed">completed</option>
+            <option value="cancelled">cancelled</option>
+          </select>
         </label>
 
         {/* Form Submit */}
-        <label>
-          <input
-            type="submit"
-            value={appointmentToEdit === null ? 'Add' : 'Save'}
-            onClick={(e) => {
-              e.preventDefault();
-              e.stopPropagation();
-              onSubmit({
-                provider,
-                specialty,
-                date,
-                time,
-                location,
-                status,
-              });
-            }}
-          />
-        </label>
+        <input
+          type="submit"
+          value={appointmentToEdit === null ? 'Add' : 'Save'}
+        />
       </fieldset>
     </form>
   );

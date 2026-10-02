@@ -1,4 +1,4 @@
-type MedStatus = 'active' | 'completed';
+export type MedStatus = 'active' | 'completed' | 'cancelled';
 
 export interface Medication {
   id: string;
@@ -7,7 +7,7 @@ export interface Medication {
   frequency: string;
   prescribedBy: string;
   startDate: string;
-  status: string;
+  status: MedStatus;
 }
 
 export type MedicationFormObj = Omit<Medication, 'id'>;

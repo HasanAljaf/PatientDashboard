@@ -2,6 +2,8 @@ export type RefRange =
   | { low: number; high: number | null }
   | { low: number | null; high: number };
 
+export type RangeFlag = 'low' | 'normal' | 'high';
+
 // Fields every lab result has, regardless of status
 type LabResultBase = {
   id: string;
@@ -26,5 +28,3 @@ export type LabResult = CompletedLabResult | PendingLabResult;
 
 // Derived from the union, so it can never drift out of sync
 export type LabStatus = LabResult['status'];
-
-export type RangeFlag = 'low' | 'normal' | 'high';

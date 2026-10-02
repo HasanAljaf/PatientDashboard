@@ -138,7 +138,7 @@ export default function MedicationManager({
         <MedicationForm
           medicationToEdit={medicationToEdit}
           isModalOpen={isModalOpen}
-          onSubmit={handleFormSubmit}
+          onSave={handleFormSubmit}
         />
       </Modal>
     </div>

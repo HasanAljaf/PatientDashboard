@@ -1,4 +1,4 @@
-type ApptStatus = 'completed' | 'upcoming' | 'cancelled';
+export type ApptStatus = 'completed' | 'upcoming' | 'cancelled';
 
 export interface Appointment {
   id: string;
@@ -7,7 +7,7 @@ export interface Appointment {
   date: string;
   time: string;
   location: string;
-  status: string;
+  status: ApptStatus;
 }
 
 export type AppointmentFormObj = Omit<Appointment, 'id'>;

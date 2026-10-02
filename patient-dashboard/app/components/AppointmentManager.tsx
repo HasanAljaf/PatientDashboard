@@ -139,7 +139,7 @@ export default function AppointmentManager({
       <Modal dialogRef={dialogRef} onClose={handleModalClose}>
         <AppointmentForm
           appointmentToEdit={appointmentToEdit}
-          onSubmit={handleFormSubmit}
+          onSave={handleFormSubmit}
           isModalOpen={isModalOpen}
         />
       </Modal>
