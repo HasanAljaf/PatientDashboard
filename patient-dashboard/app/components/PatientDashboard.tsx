@@ -30,39 +30,35 @@ export default function PatientDashboard() {
   const [medications, setMedications] =
     useState<Medication[]>(initialMedications);
 
-  const hideVisibility = {
-    display: 'none',
-  };
   return (
     <section>
       <div className="bg-white text-black">
-        <Profile
-          patient={patient}
-          style={activeTab !== 'Profile' ? hideVisibility : undefined}
-        />
-        <Overview
-          patient={patient}
-          appointments={appointments}
-          medications={medications}
-          style={activeTab !== 'Overview' ? hideVisibility : undefined}
-        />
-        <AppointmentManager
-          appointments={appointments}
-          setAppointments={setAppointments}
-          style={activeTab !== 'Appointments' ? hideVisibility : undefined}
-        />
-        <MedicationManager
-          medications={medications}
-          setMedications={setMedications}
-          style={activeTab !== 'Medications' ? hideVisibility : undefined}
-        />
-        <LabResults
-          style={activeTab !== 'LabResults' ? hideVisibility : undefined}
-          labResults={initialLabResults}
-        />
+        {activeTab === 'Profile' && <Profile patient={patient} />}
+        {activeTab === 'Overview' && (
+          <Overview
+            patient={patient}
+            appointments={appointments}
+            medications={medications}
+          />
+        )}
+        {activeTab === 'Appointments' && (
+          <AppointmentManager
+            appointments={appointments}
+            setAppointments={setAppointments}
+          />
+        )}
+        {activeTab === 'Medications' && (
+          <MedicationManager
+            medications={medications}
+            setMedications={setMedications}
+          />
+        )}
+        {activeTab === 'LabResults' && (
+          <LabResults labResults={initialLabResults} />
+        )}
       </div>
       <nav>
-        <Navbar activeTab={activeTab} setActiveTab={setActiveTab} />
+        <Navbar setActiveTab={setActiveTab} />
       </nav>
     </section>
   );

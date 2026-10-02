@@ -1,24 +1,23 @@
 // Shared Imports
-import { ToggleVisibility } from '../sharedPropTypes/ToggleVisibilityTypes';
+
 import type { Patient } from '../sharedPropTypes/PatientTypes';
 import type { Appointment } from '../sharedPropTypes/AppointmentTypes';
 import type { Medication } from '../sharedPropTypes/MedicationTypes';
 
 // Overview Props
-type OverviewProps = ToggleVisibility & {
+type OverviewProps = {
   patient: Patient;
   appointments: Appointment[];
   medications: Medication[];
 };
 
 export default function Overview({
-  style,
   patient,
   appointments,
   medications,
 }: OverviewProps) {
   return (
-    <section style={style}>
+    <section>
       <h1>Overview</h1>
       <div>
         <h2>Profile Summary</h2>

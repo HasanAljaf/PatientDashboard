@@ -2,7 +2,6 @@
 import { useState, useRef, useEffect } from 'react';
 
 // Shared Imports
-import { ToggleVisibility } from '../sharedPropTypes/ToggleVisibilityTypes';
 import type {
   Appointment,
   AppointmentFormObj,
@@ -13,13 +12,12 @@ import AppointmentForm from './AppointmentForm';
 import Modal from './Modal';
 
 // Appointment Manager Props
-type AppointmentManagerProps = ToggleVisibility & {
+type AppointmentManagerProps = {
   appointments: Appointment[];
   setAppointments: React.Dispatch<React.SetStateAction<Appointment[]>>;
 };
 
 export default function AppointmentManager({
-  style,
   appointments,
   setAppointments,
 }: AppointmentManagerProps) {
@@ -91,7 +89,7 @@ export default function AppointmentManager({
   }, [isModalOpen]);
 
   return (
-    <div style={style}>
+    <div>
       <h1>Appointment Manager</h1>
       <table>
         {/* Title/Summary of the Table */}

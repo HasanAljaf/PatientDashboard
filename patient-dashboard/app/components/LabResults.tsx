@@ -6,7 +6,6 @@ import {
 } from '../Utils/labResultUtils';
 
 // Shared Imports
-import { ToggleVisibility } from '../sharedPropTypes/ToggleVisibilityTypes';
 import type { LabResult } from '../sharedPropTypes/LabResultTypes';
 
 // Component Imports
@@ -14,13 +13,13 @@ import LabResultCard from './LabResultCard';
 import StatusBadge from './StatusBadge';
 
 // Lab Results Props
-type LabResultsProps = ToggleVisibility & {
+type LabResultsProps = {
   labResults: LabResult[];
 };
 
-export default function LabResults({ style, labResults }: LabResultsProps) {
+export default function LabResults({ labResults }: LabResultsProps) {
   return (
-    <div style={style}>
+    <div>
       <header>
         <h1>Lab Results</h1>
         <p>

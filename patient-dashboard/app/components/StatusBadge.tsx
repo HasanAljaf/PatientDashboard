@@ -14,13 +14,13 @@ const statusLabel: Record<StatusTypes, string> = {
   active: 'Active',
 };
 
-function getStatusLabel(status: LabStatus): string {
+function getStatusLabel(status: StatusTypes): string {
   return statusLabel[status];
 }
 
 // Badge Prop Types
 type StatusBadgeProps = {
-  status: LabStatus;
+  status: StatusTypes;
 };
 
 export default function StatusBadge({ status }: StatusBadgeProps) {

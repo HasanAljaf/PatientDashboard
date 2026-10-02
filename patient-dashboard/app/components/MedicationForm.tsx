@@ -38,7 +38,7 @@ export default function MedicationForm({
   }, [medicationToEdit, isModalOpen]);
 
   // Event Handlers
-  function HandleSubmit(e: React.SubmitEvent<HTMLFormElement>) {
+  function handleSubmit(e: React.SubmitEvent<HTMLFormElement>) {
     e.preventDefault();
     onSave({
       name,
@@ -51,7 +51,7 @@ export default function MedicationForm({
   }
 
   return (
-    <form onSubmit={HandleSubmit}>
+    <form onSubmit={handleSubmit}>
       {/* Form Heading */}
       <h2>Medication Form</h2>
       <p>

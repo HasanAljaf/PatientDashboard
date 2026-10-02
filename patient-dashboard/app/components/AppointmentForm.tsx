@@ -20,11 +20,11 @@ export default function AppointmentForm({
   isModalOpen,
 }: AppointmentFormProps) {
   // Form Input States
-  const [provider, setProvider] = useState<string>(' ');
-  const [specialty, setSpecialty] = useState<string>(' ');
-  const [date, setDate] = useState<string>(' ');
-  const [time, setTime] = useState<string>(' ');
-  const [location, setLocation] = useState<string>(' ');
+  const [provider, setProvider] = useState<string>('');
+  const [specialty, setSpecialty] = useState<string>('');
+  const [date, setDate] = useState<string>('');
+  const [time, setTime] = useState<string>('');
+  const [location, setLocation] = useState<string>('');
   const [status, setStatus] = useState<ApptStatus>('upcoming');
 
   // Effects - syncing appointmentToEdit with form fields

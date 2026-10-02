@@ -1,15 +1,14 @@
 // Shared Imports
-import { ToggleVisibility } from '../sharedPropTypes/ToggleVisibilityTypes';
 import type { Patient } from '../sharedPropTypes/PatientTypes';
 
 // Profile Props
-type ProfileProps = ToggleVisibility & {
+type ProfileProps = {
   patient: Patient;
 };
 
-export default function Profile({ style, patient }: ProfileProps) {
+export default function Profile({ patient }: ProfileProps) {
   return (
-    <section style={style}>
+    <section>
       <h1>Patient Profile</h1>
       <div>
         <h2>

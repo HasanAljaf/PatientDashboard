@@ -2,7 +2,6 @@
 import { useState, useRef, useEffect } from 'react';
 
 // Shared Imports
-import { ToggleVisibility } from '../sharedPropTypes/ToggleVisibilityTypes';
 import type {
   Medication,
   MedicationFormObj,
@@ -13,13 +12,12 @@ import Modal from './Modal';
 import MedicationForm from './MedicationForm';
 
 // Medication Manager Props
-type MedicationManagerProps = ToggleVisibility & {
+type MedicationManagerProps = {
   medications: Medication[];
   setMedications: React.Dispatch<React.SetStateAction<Medication[]>>;
 };
 
 export default function MedicationManager({
-  style,
   medications,
   setMedications,
 }: MedicationManagerProps) {
@@ -89,7 +87,7 @@ export default function MedicationManager({
   }, [isModalOpen]);
 
   return (
-    <div style={style}>
+    <div>
       <h1>Medication Manager</h1>
       <table>
         {/* Title/Summary of the Table */}
