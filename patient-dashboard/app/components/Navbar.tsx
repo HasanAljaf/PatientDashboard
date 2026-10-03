@@ -2,10 +2,11 @@
 import type { Tab } from '../sharedPropTypes/TabTypes';
 
 type NavbarTypes = {
+  activeTab: string;
   setActiveTab: (tab: Tab) => void;
 };
 
-export default function Navbar({ setActiveTab }: NavbarTypes) {
+export default function Navbar({ activeTab, setActiveTab }: NavbarTypes) {
   function handleClick(tab: Tab) {
     setActiveTab(tab);
   }

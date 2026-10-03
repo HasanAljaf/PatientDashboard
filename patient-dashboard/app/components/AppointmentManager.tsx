@@ -10,6 +10,8 @@ import type {
 // Component Imports
 import AppointmentForm from './AppointmentForm';
 import Modal from './Modal';
+import AppointmentCard from './AppointmentCard';
+import StatusBadge from './StatusBadge';
 
 // Appointment Manager Props
 type AppointmentManagerProps = {
@@ -31,6 +33,8 @@ export default function AppointmentManager({
   // Variables
   const appointmentToEdit =
     appointments.find((a) => a.id === editingId) ?? null;
+
+  const isDataEmpty = appointments.length === 0;
 
   // Event Handlers
   function handleFormSubmit(appointmentObj: AppointmentFormObj) {
@@ -69,7 +73,7 @@ export default function AppointmentManager({
     setIsModalOpen(true);
   }
 
-  // handed down to Modal as onClick
+  // handed down to Modal as onClose
   function handleModalClose() {
     setEditingId(null);
     setIsModalOpen(false);
@@ -90,49 +94,68 @@ export default function AppointmentManager({
 
   return (
     <div>
-      <h1>Appointment Manager</h1>
-      <table>
-        {/* Title/Summary of the Table */}
-        <caption>
-          {appointments.length > 0 ? 'Current Appointments' : 'No Appointments'}
-        </caption>
+      <header>
+        <h1>Appointment Manager</h1>
+        <button onClick={handleAddClick}>Add Appointment</button>
+      </header>
 
-        {/* Header Section (Columns Labels) */}
-        {appointments.length > 0 ? (
-          <thead>
-            <tr>
-              <th>Provider</th>
-              <th>Specialty</th>
-              <th>Date</th>
-              <th>Time</th>
-              <th>Location</th>
-              <th>Status</th>
-            </tr>
-          </thead>
-        ) : null}
+      {isDataEmpty ? (
+        <p>No Appointments</p>
+      ) : (
+        <>
+          <p>Current Appointments</p>
+          {/* Mobile view: hidden at md+ */}
+          <ul>
+            {appointments.map((a) => (
+              <li key={a.id}>
+                <AppointmentCard
+                  appointment={a}
+                  onEdit={handleEditClick}
+                  onDelete={handleDeleteClick}
+                />
+              </li>
+            ))}
+          </ul>
 
-        {/* Main Data Section */}
-        <tbody>
-          {appointments.map((a) => (
-            <tr key={a.id}>
-              <td>{a.provider}</td>
-              <td>{a.specialty}</td>
-              <td>{a.date}</td>
-              <td>{a.time}</td>
-              <td>{a.location}</td>
-              <td>{a.status}</td>
-              <td>
-                <button onClick={() => handleEditClick(a.id)}>Edit</button>
-              </td>
-              <td>
-                <button onClick={() => handleDeleteClick(a.id)}>Delete</button>
-              </td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
-
-      <button onClick={handleAddClick}>Add Appointment</button>
+          {/* Desktop view: hidden below md */}
+          <table>
+            {/* table header */}
+            <thead>
+              <tr>
+                <th>Provider</th>
+                <th>Specialty</th>
+                <th>Date</th>
+                <th>Time</th>
+                <th>Location</th>
+                <th>Status</th>
+              </tr>
+            </thead>
+            {/* table body */}
+            <tbody>
+              {appointments.map((a) => (
+                <tr key={a.id}>
+                  <td>{a.provider}</td>
+                  <td>{a.specialty}</td>
+                  <td>{a.date}</td>
+                  <td>{a.time}</td>
+                  <td>{a.location}</td>
+                  <td>
+                    <StatusBadge status={a.status} />
+                  </td>
+                  <td>
+                    <button onClick={() => handleEditClick(a.id)}>Edit</button>
+                  </td>
+                  <td>
+                    <button onClick={() => handleDeleteClick(a.id)}>
+                      Delete
+                    </button>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </>
+      )}
 
       <Modal dialogRef={dialogRef} onClose={handleModalClose}>
         <AppointmentForm

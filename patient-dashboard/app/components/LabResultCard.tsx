@@ -10,6 +10,7 @@ import type { LabResult } from '../sharedPropTypes/LabResultTypes';
 
 // Component Imports
 import StatusBadge from './StatusBadge';
+import Card from './Card';
 
 // Lab Result Card Props
 type LabResultCardProps = {
@@ -18,14 +19,14 @@ type LabResultCardProps = {
 
 export default function LabResultCard({ labResult }: LabResultCardProps) {
   return (
-    <article>
-      <div>
+    <Card>
+      <header>
         <div>
           <h2>{labResult.testName}</h2>
           <p>{labResult.date}</p>
         </div>
         <StatusBadge status={labResult.status} />
-      </div>
+      </header>
       {labResult.status === 'completed' && (
         <>
           <dl>
@@ -52,6 +53,6 @@ export default function LabResultCard({ labResult }: LabResultCardProps) {
         </p>
       )}
       {labResult.status === 'cancelled' && <p>This test was cancelled</p>}
-    </article>
+    </Card>
   );
 }

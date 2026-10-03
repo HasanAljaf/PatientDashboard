@@ -10,6 +10,8 @@ import type {
 // Component Imports
 import Modal from './Modal';
 import MedicationForm from './MedicationForm';
+import MedicationCard from './MedicationCard';
+import StatusBadge from './StatusBadge';
 
 // Medication Manager Props
 type MedicationManagerProps = {
@@ -30,6 +32,7 @@ export default function MedicationManager({
 
   // Variables
   const medicationToEdit = medications.find((m) => m.id === editingId) ?? null;
+  const isDataEmpty = medications.length === 0;
 
   // Event Handlers
   function handleFormSubmit(medicationObj: MedicationFormObj) {
@@ -88,49 +91,66 @@ export default function MedicationManager({
 
   return (
     <div>
-      <h1>Medication Manager</h1>
-      <table>
-        {/* Title/Summary of the Table */}
-        <caption>
-          {medications.length > 0 ? 'Medications List' : 'No Medications'}
-        </caption>
+      <header>
+        <h1>Medication Manager</h1>
+        <button onClick={handleAddClick}>Add Medication</button>
+      </header>
 
-        {/* Header Section (Columns Labels) */}
-        {medications.length > 0 ? (
-          <thead>
-            <tr>
-              <th>Name</th>
-              <th>Dosage</th>
-              <th>Frequency</th>
-              <th>Prescriber</th>
-              <th>Start Date</th>
-              <th>Status</th>
-            </tr>
-          </thead>
-        ) : null}
+      {isDataEmpty ? (
+        <p>No Medications</p>
+      ) : (
+        <>
+          <p>Current Medications</p>
+          {/* Mobile view: hidden at md+ */}
+          {medications.map((m) => (
+            <li key={m.id}>
+              <MedicationCard
+                medication={m}
+                onEdit={handleEditClick}
+                onDelete={handleDeleteClick}
+              />
+            </li>
+          ))}
 
-        {/* Main Data Section */}
-        <tbody>
-          {medications.map((m) => [
-            <tr key={m.id}>
-              <td>{m.name}</td>
-              <td>{m.dosage}</td>
-              <td>{m.frequency}</td>
-              <td>{m.prescribedBy}</td>
-              <td>{m.startDate}</td>
-              <td>{m.status}</td>
-              <td>
-                <button onClick={() => handleEditClick(m.id)}>Edit</button>
-              </td>
-              <td>
-                <button onClick={() => handleDeleteClick(m.id)}>Delete</button>
-              </td>
-            </tr>,
-          ])}
-        </tbody>
-      </table>
-
-      <button onClick={handleAddClick}>Add Medication</button>
+          {/* Desktop view: hidden below md */}
+          <table>
+            {/* table header */}
+            <thead>
+              <tr>
+                <th>Name</th>
+                <th>Dosage</th>
+                <th>Frequency</th>
+                <th>Prescriber</th>
+                <th>Start Date</th>
+                <th>Status</th>
+              </tr>
+            </thead>
+            {/* table body */}
+            <tbody>
+              {medications.map((m) => (
+                <tr key={m.id}>
+                  <td>{m.name}</td>
+                  <td>{m.dosage}</td>
+                  <td>{m.frequency}</td>
+                  <td>{m.prescribedBy}</td>
+                  <td>{m.startDate}</td>
+                  <td>
+                    <StatusBadge status={m.status} />
+                  </td>
+                  <td>
+                    <button onClick={() => handleEditClick(m.id)}>Edit</button>
+                  </td>
+                  <td>
+                    <button onClick={() => handleDeleteClick(m.id)}>
+                      Delete
+                    </button>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </>
+      )}
 
       <Modal dialogRef={dialogRef} onClose={handleModalClose}>
         <MedicationForm

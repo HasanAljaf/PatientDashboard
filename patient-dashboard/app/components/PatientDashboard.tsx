@@ -58,7 +58,7 @@ export default function PatientDashboard() {
         )}
       </div>
       <nav>
-        <Navbar setActiveTab={setActiveTab} />
+        <Navbar activeTab={activeTab} setActiveTab={setActiveTab} />
       </nav>
     </section>
   );
