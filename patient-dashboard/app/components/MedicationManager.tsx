@@ -102,15 +102,17 @@ export default function MedicationManager({
         <>
           <p>Current Medications</p>
           {/* Mobile view: hidden at md+ */}
-          {medications.map((m) => (
-            <li key={m.id}>
-              <MedicationCard
-                medication={m}
-                onEdit={handleEditClick}
-                onDelete={handleDeleteClick}
-              />
-            </li>
-          ))}
+          <ul>
+            {medications.map((m) => (
+              <li key={m.id}>
+                <MedicationCard
+                  medication={m}
+                  onEdit={handleEditClick}
+                  onDelete={handleDeleteClick}
+                />
+              </li>
+            ))}
+          </ul>
 
           {/* Desktop view: hidden below md */}
           <table>

@@ -18,26 +18,33 @@ type LabResultsProps = {
 };
 
 export default function LabResults({ labResults }: LabResultsProps) {
+  // Variables
+  const isDataEmpty = labResults.length === 0;
+
   return (
     <div>
       <header>
         <h1>Lab Results</h1>
         <p>
-          {labResults.length} {labResults.length === 1 ? 'test' : 'tests'}
+          {isDataEmpty
+            ? null
+            : labResults.length +
+              ' ' +
+              (labResults.length === 1 ? 'test' : 'tests')}
         </p>
       </header>
-
-      <section>
-        {/* Mobile View */}
-        <ul>
-          {labResults.map((result) => (
-            <li key={result.id}>
-              <LabResultCard labResult={result} />
-            </li>
-          ))}
-        </ul>
-
-        <div>
+      {isDataEmpty ? (
+        <p>No Lab Tests</p>
+      ) : (
+        <>
+          {/* Mobile View */}
+          <ul>
+            {labResults.map((result) => (
+              <li key={result.id}>
+                <LabResultCard labResult={result} />
+              </li>
+            ))}
+          </ul>
           {/* Desktop View */}
           <table>
             <caption>Lab Results</caption>
@@ -77,8 +84,8 @@ export default function LabResults({ labResults }: LabResultsProps) {
               ))}
             </tbody>
           </table>
-        </div>
-      </section>
+        </>
+      )}
     </div>
   );
 }
