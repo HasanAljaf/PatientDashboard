@@ -4,6 +4,7 @@ import type { Medication } from '../sharedPropTypes/MedicationTypes';
 // Component imports
 import Card from './Card';
 import StatusBadge from './StatusBadge';
+import Button from './Button';
 
 // Medication Card Props
 type MedicationCardProps = {
@@ -39,8 +40,12 @@ export default function MedicationCard({
         </div>
       </dl>
       <footer>
-        <button onClick={() => onEdit(medication.id)}>Edit</button>
-        <button onClick={() => onDelete(medication.id)}>Delete</button>
+        <Button onClick={() => onEdit(medication.id)} variant="secondary">
+          Edit
+        </Button>
+        <Button onClick={() => onDelete(medication.id)} variant="destructive">
+          Delete
+        </Button>
       </footer>
     </Card>
   );

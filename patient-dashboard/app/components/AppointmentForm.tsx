@@ -7,6 +7,9 @@ import type {
   ApptStatus,
 } from '../sharedPropTypes/AppointmentTypes';
 
+// Component Imports
+import Button from './Button';
+
 // Appointment Form Props
 type AppointmentFormProps = {
   appointmentToEdit: AppointmentFormObj | null;
@@ -115,10 +118,9 @@ export default function AppointmentForm({
         </label>
 
         {/* Form Submit */}
-        <input
-          type="submit"
-          value={appointmentToEdit === null ? 'Add' : 'Save'}
-        />
+        <Button variant="primary" type="submit">
+          {appointmentToEdit === null ? 'Add' : 'Save'}
+        </Button>
       </fieldset>
     </form>
   );

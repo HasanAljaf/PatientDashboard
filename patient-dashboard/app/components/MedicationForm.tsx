@@ -7,6 +7,9 @@ import type {
   MedStatus,
 } from '../sharedPropTypes/MedicationTypes';
 
+// Component Imports
+import Button from './Button';
+
 // Medication Form Props
 type MedicationFormProps = {
   medicationToEdit: MedicationFormObj | null;
@@ -122,10 +125,9 @@ export default function MedicationForm({
         </label>
 
         {/* Form Submit */}
-        <input
-          type="submit"
-          value={medicationToEdit === null ? 'Add' : 'Save'}
-        />
+        <Button variant="primary" type="submit">
+          {medicationToEdit === null ? 'Add' : 'Save'}
+        </Button>
       </fieldset>
     </form>
   );

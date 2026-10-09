@@ -12,6 +12,7 @@ import AppointmentForm from './AppointmentForm';
 import Modal from './Modal';
 import AppointmentCard from './AppointmentCard';
 import StatusBadge from './StatusBadge';
+import Button from './Button';
 
 // Appointment Manager Props
 type AppointmentManagerProps = {
@@ -96,7 +97,9 @@ export default function AppointmentManager({
     <div>
       <header>
         <h1>Appointment Manager</h1>
-        <button onClick={handleAddClick}>Add Appointment</button>
+        <Button onClick={handleAddClick} variant="primary">
+          Add Appointment
+        </Button>
       </header>
 
       {isDataEmpty ? (
@@ -143,12 +146,20 @@ export default function AppointmentManager({
                     <StatusBadge status={a.status} />
                   </td>
                   <td>
-                    <button onClick={() => handleEditClick(a.id)}>Edit</button>
+                    <Button
+                      onClick={() => handleEditClick(a.id)}
+                      variant="secondary"
+                    >
+                      Edit
+                    </Button>
                   </td>
                   <td>
-                    <button onClick={() => handleDeleteClick(a.id)}>
+                    <Button
+                      onClick={() => handleDeleteClick(a.id)}
+                      variant="destructive"
+                    >
                       Delete
-                    </button>
+                    </Button>
                   </td>
                 </tr>
               ))}

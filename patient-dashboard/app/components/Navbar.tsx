@@ -1,3 +1,6 @@
+// Component Imports
+import Button from './Button';
+
 // Shared Imports
 import type { Tab } from '../sharedPropTypes/TabTypes';
 
@@ -14,21 +17,29 @@ export default function Navbar({ activeTab, setActiveTab }: NavbarTypes) {
   return (
     <ul>
       <li>
-        <button onClick={() => handleClick('Overview')}>Overview</button>
+        <Button onClick={() => handleClick('Overview')} variant="primary">
+          Overview
+        </Button>
       </li>
       <li>
-        <button onClick={() => handleClick('Profile')}>Profile</button>
+        <Button onClick={() => handleClick('Profile')} variant="primary">
+          Profile
+        </Button>
       </li>
       <li>
-        <button onClick={() => handleClick('Appointments')}>
+        <Button onClick={() => handleClick('Appointments')} variant="primary">
           Appointments
-        </button>
+        </Button>
       </li>
       <li>
-        <button onClick={() => handleClick('Medications')}>Medications</button>
+        <Button onClick={() => handleClick('Medications')} variant="primary">
+          Medications
+        </Button>
       </li>
       <li>
-        <button onClick={() => handleClick('LabResults')}>LabResults</button>
+        <Button onClick={() => handleClick('LabResults')} variant="primary">
+          LabResults
+        </Button>
       </li>
     </ul>
   );

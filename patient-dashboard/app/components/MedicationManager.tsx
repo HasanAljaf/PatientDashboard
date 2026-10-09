@@ -12,6 +12,7 @@ import Modal from './Modal';
 import MedicationForm from './MedicationForm';
 import MedicationCard from './MedicationCard';
 import StatusBadge from './StatusBadge';
+import Button from './Button';
 
 // Medication Manager Props
 type MedicationManagerProps = {
@@ -93,7 +94,9 @@ export default function MedicationManager({
     <div>
       <header>
         <h1>Medication Manager</h1>
-        <button onClick={handleAddClick}>Add Medication</button>
+        <Button onClick={handleAddClick} variant="primary">
+          Add Medication
+        </Button>
       </header>
 
       {isDataEmpty ? (
@@ -140,12 +143,20 @@ export default function MedicationManager({
                     <StatusBadge status={m.status} />
                   </td>
                   <td>
-                    <button onClick={() => handleEditClick(m.id)}>Edit</button>
+                    <Button
+                      onClick={() => handleEditClick(m.id)}
+                      variant="secondary"
+                    >
+                      Edit
+                    </Button>
                   </td>
                   <td>
-                    <button onClick={() => handleDeleteClick(m.id)}>
+                    <Button
+                      onClick={() => handleDeleteClick(m.id)}
+                      variant="destructive"
+                    >
                       Delete
-                    </button>
+                    </Button>
                   </td>
                 </tr>
               ))}

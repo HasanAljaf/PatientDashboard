@@ -4,6 +4,7 @@ import type { Appointment } from '../sharedPropTypes/AppointmentTypes';
 // Component Imports
 import Card from './Card';
 import StatusBadge from './StatusBadge';
+import Button from './Button';
 
 // Appointment Card Props
 type AppointmentCardProps = {
@@ -41,22 +42,24 @@ export default function AppointmentCard({
         </div>
       </dl>
       <footer>
-        <button
-          id={`Edit appointment for ${appointment.provider}`}
+        <Button
+          aria-label={`Edit appointment for ${appointment.provider}`}
           onClick={() => {
             onEdit(appointment.id);
           }}
+          variant="secondary"
         >
           Edit
-        </button>
-        <button
-          id={`Delete appointment for ${appointment.provider}`}
+        </Button>
+        <Button
+          arial-label={`Delete appointment for ${appointment.provider}`}
           onClick={() => {
             onDelete(appointment.id);
           }}
+          variant="destructive"
         >
           Delete
-        </button>
+        </Button>
       </footer>
     </Card>
   );

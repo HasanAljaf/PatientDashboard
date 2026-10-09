@@ -1,9 +1,5 @@
 // Shared Imports
-import type {
-  RefRange,
-  RangeFlag,
-  LabStatus,
-} from '../sharedPropTypes/LabResultTypes';
+import type { RefRange, RangeFlag } from '../sharedPropTypes/LabResultTypes';
 
 function formatRange(range: RefRange, unit: string) {
   if (range.low === null) {
