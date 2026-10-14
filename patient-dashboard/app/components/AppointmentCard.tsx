@@ -52,7 +52,7 @@ export default function AppointmentCard({
           Edit
         </Button>
         <Button
-          arial-label={`Delete appointment for ${appointment.provider}`}
+          aria-label={`Delete appointment for ${appointment.provider}`}
           onClick={() => {
             onDelete(appointment.id);
           }}

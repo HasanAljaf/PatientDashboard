@@ -15,12 +15,14 @@ type MedicationFormProps = {
   medicationToEdit: MedicationFormObj | null;
   isModalOpen: boolean;
   onSave: (medicationObj: MedicationFormObj) => void; // handleFormSubmit from MedicationManager
+  handleModalClose: () => void;
 };
 
 export default function MedicationForm({
   medicationToEdit,
   onSave,
   isModalOpen,
+  handleModalClose,
 }: MedicationFormProps) {
   // State Variables
   const [name, setName] = useState<string>('');
@@ -127,6 +129,11 @@ export default function MedicationForm({
         {/* Form Submit */}
         <Button variant="primary" type="submit">
           {medicationToEdit === null ? 'Add' : 'Save'}
+        </Button>
+
+        {/* Cancel/Close Form */}
+        <Button onClick={handleModalClose} variant="destructive">
+          Cancel
         </Button>
       </fieldset>
     </form>

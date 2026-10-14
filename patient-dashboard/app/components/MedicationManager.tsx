@@ -94,7 +94,11 @@ export default function MedicationManager({
     <div>
       <header>
         <h1>Medication Manager</h1>
-        <Button onClick={handleAddClick} variant="primary">
+        <Button
+          aria-label="Add medication"
+          onClick={handleAddClick}
+          variant="primary"
+        >
           Add Medication
         </Button>
       </header>
@@ -144,6 +148,7 @@ export default function MedicationManager({
                   </td>
                   <td>
                     <Button
+                      aria-label={`Edit medication for ${m.name}`}
                       onClick={() => handleEditClick(m.id)}
                       variant="secondary"
                     >
@@ -152,6 +157,7 @@ export default function MedicationManager({
                   </td>
                   <td>
                     <Button
+                      aria-label={`Delete medication for ${m.name}`}
                       onClick={() => handleDeleteClick(m.id)}
                       variant="destructive"
                     >
@@ -170,6 +176,7 @@ export default function MedicationManager({
           medicationToEdit={medicationToEdit}
           isModalOpen={isModalOpen}
           onSave={handleFormSubmit}
+          handleModalClose={handleModalClose}
         />
       </Modal>
     </div>

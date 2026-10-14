@@ -40,10 +40,18 @@ export default function MedicationCard({
         </div>
       </dl>
       <footer>
-        <Button onClick={() => onEdit(medication.id)} variant="secondary">
+        <Button
+          aria-label={`Edit medication for ${medication.name}`}
+          onClick={() => onEdit(medication.id)}
+          variant="secondary"
+        >
           Edit
         </Button>
-        <Button onClick={() => onDelete(medication.id)} variant="destructive">
+        <Button
+          aria-label={`Delete medication for ${medication.name}`}
+          onClick={() => onDelete(medication.id)}
+          variant="destructive"
+        >
           Delete
         </Button>
       </footer>

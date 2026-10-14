@@ -97,7 +97,11 @@ export default function AppointmentManager({
     <div>
       <header>
         <h1>Appointment Manager</h1>
-        <Button onClick={handleAddClick} variant="primary">
+        <Button
+          aria-label="Add appointment"
+          onClick={handleAddClick}
+          variant="primary"
+        >
           Add Appointment
         </Button>
       </header>
@@ -147,6 +151,7 @@ export default function AppointmentManager({
                   </td>
                   <td>
                     <Button
+                      aria-label={`Edit appointment for ${a.provider}`}
                       onClick={() => handleEditClick(a.id)}
                       variant="secondary"
                     >
@@ -155,6 +160,7 @@ export default function AppointmentManager({
                   </td>
                   <td>
                     <Button
+                      aria-label={`Delete appointment for ${a.provider}`}
                       onClick={() => handleDeleteClick(a.id)}
                       variant="destructive"
                     >
@@ -173,6 +179,7 @@ export default function AppointmentManager({
           appointmentToEdit={appointmentToEdit}
           onSave={handleFormSubmit}
           isModalOpen={isModalOpen}
+          handleModalClose={handleModalClose}
         />
       </Modal>
     </div>
