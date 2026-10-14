@@ -94,11 +94,7 @@ export default function MedicationManager({
     <div>
       <header>
         <h1>Medication Manager</h1>
-        <Button
-          aria-label="Add medication"
-          onClick={handleAddClick}
-          variant="primary"
-        >
+        <Button onClick={handleAddClick} variant="primary">
           Add Medication
         </Button>
       </header>
@@ -176,7 +172,7 @@ export default function MedicationManager({
           medicationToEdit={medicationToEdit}
           isModalOpen={isModalOpen}
           onSave={handleFormSubmit}
-          handleModalClose={handleModalClose}
+          onClose={handleModalClose}
         />
       </Modal>
     </div>

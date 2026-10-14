@@ -15,14 +15,14 @@ type AppointmentFormProps = {
   appointmentToEdit: AppointmentFormObj | null;
   onSave: (appointmentObj: AppointmentFormObj) => void; // handleFormSubmit from AppointmentManager
   isModalOpen: boolean;
-  handleModalClose: () => void;
+  onClose: () => void;
 };
 
 export default function AppointmentForm({
   appointmentToEdit,
   onSave,
   isModalOpen,
-  handleModalClose,
+  onClose,
 }: AppointmentFormProps) {
   // Form Input States
   const [provider, setProvider] = useState<string>('');
@@ -125,7 +125,7 @@ export default function AppointmentForm({
         </Button>
 
         {/* Cancel/Close Form */}
-        <Button onClick={handleModalClose} variant="destructive">
+        <Button onClick={onClose} variant="secondary">
           Cancel
         </Button>
       </fieldset>

@@ -2,7 +2,7 @@
 import type { Tab } from '../sharedPropTypes/TabTypes';
 
 type NavbarTypes = {
-  activeTab: string;
+  activeTab: Tab;
   setActiveTab: (tab: Tab) => void;
 };
 

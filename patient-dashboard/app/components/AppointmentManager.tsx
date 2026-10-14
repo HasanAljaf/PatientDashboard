@@ -97,11 +97,7 @@ export default function AppointmentManager({
     <div>
       <header>
         <h1>Appointment Manager</h1>
-        <Button
-          aria-label="Add appointment"
-          onClick={handleAddClick}
-          variant="primary"
-        >
+        <Button onClick={handleAddClick} variant="primary">
           Add Appointment
         </Button>
       </header>
@@ -179,7 +175,7 @@ export default function AppointmentManager({
           appointmentToEdit={appointmentToEdit}
           onSave={handleFormSubmit}
           isModalOpen={isModalOpen}
-          handleModalClose={handleModalClose}
+          onClose={handleModalClose}
         />
       </Modal>
     </div>
