@@ -16,8 +16,10 @@
   --color-status-success: #639922;
   --color-status-warning: #ba7517;
   --color-status-danger: #a32d2d; /* also danger badge text and delete actions */
+  --color-status-neutral: #f3f4f6;
 
   /* Status text: darker shades for AA contrast at text-xs */
   --color-status-success-text: #3f6212;
   --color-status-warning-text: #8a5410;
+  --color-status-neutral-text: #374151;
 }

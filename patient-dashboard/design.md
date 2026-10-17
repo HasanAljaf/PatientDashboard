@@ -6,16 +6,18 @@ top, not a full reinvention of Tailwind's system.
 
 ## Colors
 
-| Purpose            | Token name         | Hex       | Tailwind usage                     |
-|---------------------|---------------------|-----------|-------------------------------------|
-| Primary accent       | `brand-teal`        | `#0F6E56` | `bg-brand-teal`, `text-brand-teal`  |
-| Accent (light tint)  | `brand-teal-50`     | `#E1F5EE` | badges, hover backgrounds           |
-| Neutral background   | `surface`           | `#F1EFE8` | `bg-surface` — page/section backgrounds |
-| Success (status)     | `status-success`    | `#639922` | "completed" appointment/med status  |
-| Warning (status)     | `status-warning`    | `#BA7517` | "upcoming" or pending status        |
-| Danger (status)      | `status-danger`     | `#A32D2D` | "cancelled" status, delete actions  |
-| Success text         | `status-success-text` | `#3F6212` | text on success badges            |
-| Warning text         | `status-warning-text` | `#8A5410` | text on warning badges            |
+| Purpose             | Token name            | Hex       | Tailwind usage                          |
+| ------------------- | --------------------- | --------- | --------------------------------------- |
+| Primary accent      | `brand-teal`          | `#0F6E56` | `bg-brand-teal`, `text-brand-teal`      |
+| Accent (light tint) | `brand-teal-50`       | `#E1F5EE` | badges, hover backgrounds               |
+| Neutral background  | `surface`             | `#F1EFE8` | `bg-surface` — page/section backgrounds |
+| Success (status)    | `status-success`      | `#639922` | "active" appointment/med status         |
+| Neutral (status)    | `status-neutral`      | `#F3F4F6` | "completed" appointment/med status      |
+| Warning (status)    | `status-warning`      | `#BA7517` | "upcoming" or pending status            |
+| Danger (status)     | `status-danger`       | `#A32D2D` | "cancelled" status, delete actions      |
+| Success text        | `status-success-text` | `#3F6212` | text on success badges                  |
+| Warning text        | `status-warning-text` | `#8A5410` | text on warning badges                  |
+| Neutral text        | `status-neutral-text` | `#374151` | text on completed badges                |
 
 **Usage rule:** one accent color (teal) for primary actions (buttons, active
 nav icon, links). Status colors are reserved for meaning (appointment/
@@ -27,13 +29,15 @@ background (about 3.0:1 and 3.2:1). Badge text therefore uses the darker
 `-text` shades, and the base color is used for the tint only. Danger passes
 as-is (about 5.8:1), so it has no separate text shade.
 
-| Badge     | Background              | Text                  | Contrast |
-|-----------|-------------------------|-----------------------|----------|
-| Success   | `status-success` at 12% | `status-success-text` | ~6.2:1   |
-| Warning   | `status-warning` at 12% | `status-warning-text` | ~5.5:1   |
-| Danger    | `status-danger` at 12%  | `status-danger`       | ~5.8:1   |
+| Badge   | Background              | Text                  | Contrast |
+| ------- | ----------------------- | --------------------- | -------- |
+| Success | `status-success` at 12% | `status-success-text` | ~6.2:1   |
+| Warning | `status-warning` at 12% | `status-warning-text` | ~5.5:1   |
+| Danger  | `status-danger` at 12%  | `status-danger`       | ~5.8:1   |
+| Neutral | `status-neutral`        | `status-neutral-text` | ~9.4:1   |
 
 ### Tailwind v4 theme (lives in `app/globals.css`)
+
 ```css
 @theme {
   --color-brand-teal: #0f6e56;
@@ -42,10 +46,13 @@ as-is (about 5.8:1), so it has no separate text shade.
   --color-status-success: #639922;
   --color-status-warning: #ba7517;
   --color-status-danger: #a32d2d;
+  --color-status-neutral: #f3f4f6;
+  --color-status-neutral-text: #374151;
   --color-status-success-text: #3f6212;
   --color-status-warning-text: #8a5410;
 }
 ```
+
 The `--color-` prefix only registers the color; the class is whatever follows
 it (`--color-surface` → `bg-surface`). Avoid names Tailwind already ships
 (e.g. `neutral-50`), or the token silently overrides the built-in.
@@ -63,7 +70,7 @@ it (`--color-surface` → `bg-surface`). Avoid names Tailwind already ships
 ## Spacing
 
 Use Tailwind's default spacing scale (4px increments) as-is. No custom
-spacing tokens — consistency comes from *reusing* Tailwind's existing scale
+spacing tokens — consistency comes from _reusing_ Tailwind's existing scale
 across components, not inventing a new one.
 
 - Card padding: `p-4` or `p-6`

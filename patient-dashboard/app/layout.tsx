@@ -10,7 +10,8 @@ const inter = Inter({
 
 export const metadata: Metadata = {
   title: 'Patient Portal',
-  description: 'A responsive patient dashboard built with Next.js, React, and TypeScript.',
+  description:
+    'A responsive patient dashboard built with Next.js, React, and TypeScript.',
 };
 
 export default function RootLayout({ children }: LayoutProps<'/'>) {
@@ -19,7 +20,9 @@ export default function RootLayout({ children }: LayoutProps<'/'>) {
       lang="en"
       className={`${inter.variable} font-sans h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col">{children}</body>
+      <body className="bg-surface text-gray-900 min-h-full flex flex-col">
+        {children}
+      </body>
     </html>
   );
 }
