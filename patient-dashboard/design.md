@@ -11,7 +11,7 @@ top, not a full reinvention of Tailwind's system.
 | Primary accent      | `brand-teal`          | `#0F6E56` | `bg-brand-teal`, `text-brand-teal`      |
 | Accent (light tint) | `brand-teal-50`       | `#E1F5EE` | badges, hover backgrounds               |
 | Neutral background  | `surface`             | `#F1EFE8` | `bg-surface` — page/section backgrounds |
-| Success (status)    | `status-success`      | `#639922` | "active" appointment/med status         |
+| Success (status)    | `status-success`      | `#639922` | "active" medication status              |
 | Neutral (status)    | `status-neutral`      | `#F3F4F6` | "completed" appointment/med status      |
 | Warning (status)    | `status-warning`      | `#BA7517` | "upcoming" or pending status            |
 | Danger (status)     | `status-danger`       | `#A32D2D` | "cancelled" status, delete actions      |

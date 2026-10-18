@@ -20,26 +20,26 @@ export default function MedicationCard({
 }: MedicationCardProps) {
   return (
     <Card>
-      <header>
+      <header className="flex items-start justify-between gap-3">
         <div>
-          <h2>{medication.name}</h2>
-          <p>
+          <h2 className="text-base font medium">{medication.name}</h2>
+          <p className="text-small text-gray-500">
             {medication.dosage} • {medication.frequency}
           </p>
         </div>
         <StatusBadge status={medication.status} />
       </header>
-      <dl>
-        <div>
-          <dt>Prescribed by</dt>
-          <dd>{medication.prescribedBy}</dd>
+      <dl className="flex flex-col gap-2">
+        <div className="flex- justify-between gap-4 text-sm">
+          <dt className="text-gray-500">Prescribed by</dt>
+          <dd className="text-right">{medication.prescribedBy}</dd>
         </div>
-        <div>
-          <dt>Start date</dt>
-          <dd>{medication.startDate}</dd>
+        <div className="flex- justify-between gap-4 text-sm">
+          <dt className="text-gray-500">Start date</dt>
+          <dd className="text-right">{medication.startDate}</dd>
         </div>
       </dl>
-      <footer>
+      <footer className="flex justify-end gap-2">
         <Button
           aria-label={`Edit medication for ${medication.name}`}
           onClick={() => onEdit(medication.id)}

@@ -20,28 +20,28 @@ export default function AppointmentCard({
 }: AppointmentCardProps) {
   return (
     <Card>
-      <header>
+      <header className="flex items-start justify-between gap-3">
         <div>
-          <h2>{appointment.provider}</h2>
-          <p>{appointment.specialty}</p>
+          <h2 className="text-base font medium">{appointment.provider}</h2>
+          <p className="text-small text-gray-500">{appointment.specialty}</p>
         </div>
         <StatusBadge status={appointment.status} />
       </header>
-      <dl>
-        <div>
-          <dt>Date</dt>
-          <dd>{appointment.date}</dd>
+      <dl className="flex flex-col gap-2">
+        <div className="flex- justify-between gap-4 text-sm">
+          <dt className="text-gray-500">Date</dt>
+          <dd className="text-right">{appointment.date}</dd>
         </div>
-        <div>
-          <dt>Time</dt>
-          <dd>{appointment.time}</dd>
+        <div className="flex- justify-between gap-4 text-sm">
+          <dt className="text-gray-500">Time</dt>
+          <dd className="text-right">{appointment.time}</dd>
         </div>
-        <div>
-          <dt>Location</dt>
-          <dd>{appointment.location}</dd>
+        <div className="flex- justify-between gap-4 text-sm">
+          <dt className="text-gray-500">Location</dt>
+          <dd className="text-right">{appointment.location}</dd>
         </div>
       </dl>
-      <footer>
+      <footer className="flex justify-end gap-2">
         <Button
           aria-label={`Edit appointment for ${appointment.provider}`}
           onClick={() => {

@@ -4,5 +4,9 @@ type CardProps = {
 };
 
 export default function Card({ children }: CardProps) {
-  return <article>{children}</article>;
+  return (
+    <article className="flex flex-col gap-4 rounded-2xl bg-white p-4 shadow-md">
+      {children}
+    </article>
+  );
 }
