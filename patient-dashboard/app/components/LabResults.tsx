@@ -22,10 +22,10 @@ export default function LabResults({ labResults }: LabResultsProps) {
   const isDataEmpty = labResults.length === 0;
 
   return (
-    <div>
-      <header>
-        <h1>Lab Results</h1>
-        <p>
+    <div className="flex flex-col gap-4">
+      <header className="flex items-center justify-between gap-3">
+        <h1 className="text-xl font-medium">Lab Results</h1>
+        <p className="text-sm text-gray-500">
           {isDataEmpty
             ? null
             : labResults.length +
@@ -34,11 +34,13 @@ export default function LabResults({ labResults }: LabResultsProps) {
         </p>
       </header>
       {isDataEmpty ? (
-        <p>No Lab Tests</p>
+        <p className="rounded-2xl bg-white p-6 text-center text-sm text-gray-500">
+          No Lab Tests
+        </p>
       ) : (
         <>
           {/* Mobile View */}
-          <ul>
+          <ul className="flex flex-col gap-4 md:hidden">
             {labResults.map((result) => (
               <li key={result.id}>
                 <LabResultCard labResult={result} />
@@ -46,7 +48,7 @@ export default function LabResults({ labResults }: LabResultsProps) {
             ))}
           </ul>
           {/* Desktop View */}
-          <table>
+          <table className="hidden md:table">
             <caption>Lab Results</caption>
             <thead>
               <tr>

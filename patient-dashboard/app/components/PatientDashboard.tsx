@@ -32,7 +32,7 @@ export default function PatientDashboard() {
 
   return (
     <section>
-      <div>
+      <div className="p-4">
         {activeTab === 'Profile' && <Profile patient={patient} />}
         {activeTab === 'Overview' && (
           <Overview

@@ -91,21 +91,25 @@ export default function MedicationManager({
   }, [isModalOpen]);
 
   return (
-    <div>
-      <header>
-        <h1>Medication Manager</h1>
+    <div className="flex flex-col gap-4">
+      <header className="flex items-center justify-between gap-3">
+        <h1 className="text-xl font-medium">Medication Manager</h1>
         <Button onClick={handleAddClick} variant="primary">
           Add Medication
         </Button>
       </header>
 
       {isDataEmpty ? (
-        <p>No Medications</p>
+        <p className="rounded-2xl bg-white p-6 text-center text-sm text-gray-500">
+          No Medications
+        </p>
       ) : (
         <>
-          <p>Current Medications</p>
+          <p className="text-sm font-medium text-gray-500">
+            Current Medications
+          </p>
           {/* Mobile view: hidden at md+ */}
-          <ul>
+          <ul className="flex flex-col gap-4 md:hidden">
             {medications.map((m) => (
               <li key={m.id}>
                 <MedicationCard
@@ -118,7 +122,7 @@ export default function MedicationManager({
           </ul>
 
           {/* Desktop view: hidden below md */}
-          <table>
+          <table className="hidden md:table">
             {/* table header */}
             <thead>
               <tr>

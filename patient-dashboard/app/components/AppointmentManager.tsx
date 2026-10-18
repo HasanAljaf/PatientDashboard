@@ -94,21 +94,25 @@ export default function AppointmentManager({
   }, [isModalOpen]);
 
   return (
-    <div>
-      <header>
-        <h1>Appointment Manager</h1>
+    <div className="flex flex-col gap-4">
+      <header className="flex items-center justify-between gap-3">
+        <h1 className="text-xl font-medium">Appointment Manager</h1>
         <Button onClick={handleAddClick} variant="primary">
           Add Appointment
         </Button>
       </header>
 
       {isDataEmpty ? (
-        <p>No Appointments</p>
+        <p className="rounded-2xl bg-white p-6 text-center text-sm text-gray-500">
+          No Appointments
+        </p>
       ) : (
         <>
-          <p>Current Appointments</p>
+          <p className="text-sm font-medium text-gray-500">
+            Current Appointments
+          </p>
           {/* Mobile view: hidden at md+ */}
-          <ul>
+          <ul className="flex flex-col gap-4 md:hidden">
             {appointments.map((a) => (
               <li key={a.id}>
                 <AppointmentCard
@@ -121,7 +125,7 @@ export default function AppointmentManager({
           </ul>
 
           {/* Desktop view: hidden below md */}
-          <table>
+          <table className="hidden md:table">
             {/* table header */}
             <thead>
               <tr>
