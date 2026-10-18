@@ -22,19 +22,19 @@ export default function MedicationCard({
     <Card>
       <header className="flex items-start justify-between gap-3">
         <div>
-          <h2 className="text-base font medium">{medication.name}</h2>
-          <p className="text-small text-gray-500">
+          <h2 className="text-base font-medium">{medication.name}</h2>
+          <p className="text-sm text-gray-500">
             {medication.dosage} • {medication.frequency}
           </p>
         </div>
         <StatusBadge status={medication.status} />
       </header>
       <dl className="flex flex-col gap-2">
-        <div className="flex- justify-between gap-4 text-sm">
+        <div className="flex justify-between gap-4 text-sm">
           <dt className="text-gray-500">Prescribed by</dt>
           <dd className="text-right">{medication.prescribedBy}</dd>
         </div>
-        <div className="flex- justify-between gap-4 text-sm">
+        <div className="flex justify-between gap-4 text-sm">
           <dt className="text-gray-500">Start date</dt>
           <dd className="text-right">{medication.startDate}</dd>
         </div>

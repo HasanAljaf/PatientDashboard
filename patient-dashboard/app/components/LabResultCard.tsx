@@ -22,21 +22,21 @@ export default function LabResultCard({ labResult }: LabResultCardProps) {
     <Card>
       <header className="flex items-start justify-between gap-3">
         <div>
-          <h2 className="text-base font medium">{labResult.testName}</h2>
-          <p className="text-small text-gray-500">{labResult.date}</p>
+          <h2 className="text-base font-medium">{labResult.testName}</h2>
+          <p className="text-sm text-gray-500">{labResult.date}</p>
         </div>
         <StatusBadge status={labResult.status} />
       </header>
       {labResult.status === 'completed' && (
         <>
           <dl className="flex flex-col gap-2">
-            <div className="flex- justify-between gap-4 text-sm">
+            <div className="flex justify-between gap-4 text-sm">
               <dt className="text-gray-500">Value</dt>
               <dd className="text-right">
                 {labResult.value + ' ' + labResult.unit}
               </dd>
             </div>
-            <div className="flex- justify-between gap-4 text-sm">
+            <div className="flex justify-between gap-4 text-sm">
               <dt className="text-gray-500">Reference</dt>
               <dd className="text-right">
                 {formatRange(labResult.referenceRange, labResult.unit)}
