@@ -1,10 +1,12 @@
 // Lucide Icons Imports
-import { LucideIcon } from 'lucide-react';
-import { LayoutDashboard } from 'lucide-react';
-import { User } from 'lucide-react';
-import { CalendarDays } from 'lucide-react';
-import { Pill } from 'lucide-react';
-import { FlaskConical } from 'lucide-react';
+import type { LucideIcon } from 'lucide-react';
+import {
+  LayoutDashboard,
+  User,
+  CalendarDays,
+  Pill,
+  FlaskConical,
+} from 'lucide-react';
 
 // Shared Imports
 import type { Tab } from '../sharedPropTypes/TabTypes';
@@ -21,38 +23,39 @@ type NavbarTypes = {
   setActiveTab: (tab: Tab) => void;
 };
 
+const tabs: TabObjects[] = [
+  {
+    tab: 'Overview',
+    label: 'Overview',
+    icon: LayoutDashboard,
+  },
+  {
+    tab: 'Profile',
+    label: 'Profile',
+    icon: User,
+  },
+  {
+    tab: 'Appointments',
+    label: 'Appointments',
+    icon: CalendarDays,
+  },
+  {
+    tab: 'Medications',
+    label: 'Medications',
+    icon: Pill,
+  },
+  {
+    tab: 'Labs',
+    label: 'Labs',
+    icon: FlaskConical,
+  },
+];
+
 export default function Navbar({ activeTab, setActiveTab }: NavbarTypes) {
   function handleClick(tab: Tab) {
     setActiveTab(tab);
   }
 
-  const tabs: TabObjects[] = [
-    {
-      tab: 'Overview',
-      label: 'Overview',
-      icon: LayoutDashboard,
-    },
-    {
-      tab: 'Profile',
-      label: 'Profile',
-      icon: User,
-    },
-    {
-      tab: 'Appointments',
-      label: 'Appointments',
-      icon: CalendarDays,
-    },
-    {
-      tab: 'Medications',
-      label: 'Medications',
-      icon: Pill,
-    },
-    {
-      tab: 'Labs',
-      label: 'Labs',
-      icon: FlaskConical,
-    },
-  ];
   return (
     <nav className="fixed inset-x-0 bottom-0 border-t border-gray-200 bg-white">
       <ul className="mx-auto flex max-w-md">

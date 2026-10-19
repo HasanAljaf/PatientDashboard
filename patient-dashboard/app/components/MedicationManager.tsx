@@ -182,7 +182,9 @@ export default function MedicationManager({
                     <td className="px-4 py-3">{m.dosage}</td>
                     <td className="px-4 py-3">{m.frequency}</td>
                     <td className="px-4 py-3">{m.prescribedBy}</td>
-                    <td className="px-4 py-3">{m.startDate}</td>
+                    <td className="px-4 py-3 whitespace-nowrap">
+                      {m.startDate}
+                    </td>
                     <td className="px-4 py-3">
                       <StatusBadge status={m.status} />
                     </td>

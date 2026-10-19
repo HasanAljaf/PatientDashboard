@@ -183,8 +183,8 @@ export default function AppointmentManager({
                   >
                     <td className="px-4 py-3">{a.provider}</td>
                     <td className="px-4 py-3">{a.specialty}</td>
-                    <td className="px-4 py-3">{a.date}</td>
-                    <td className="px-4 py-3">{a.time}</td>
+                    <td className="px-4 py-3 whitespace-nowrap">{a.date}</td>
+                    <td className="px-4 py-3 whitespace-nowrap">{a.time}</td>
                     <td className="px-4 py-3">{a.location}</td>
                     <td className="px-4 py-3">
                       <StatusBadge status={a.status} />
