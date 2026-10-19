@@ -3,4 +3,4 @@ export type Tab =
   | 'Profile'
   | 'Appointments'
   | 'Medications'
-  | 'LabResults';
+  | 'Labs';

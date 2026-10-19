@@ -110,7 +110,7 @@ export default function AppointmentForm({
           />
         </label>
         <label className="flex flex-col gap-1 text-sm font-medium">
-          Status:
+          Status
           <select
             className="min-h-11 rounded-lg border border-gray-300 bg-white px-3 text-base font-normal focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-teal"
             name="status"

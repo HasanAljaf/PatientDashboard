@@ -32,7 +32,7 @@ export default function PatientDashboard() {
 
   return (
     <section>
-      <div className="p-4">
+      <div className="mx-auto w-full max-w-5xl p-4 pb-24">
         {activeTab === 'Profile' && <Profile patient={patient} />}
         {activeTab === 'Overview' && (
           <Overview
@@ -53,13 +53,9 @@ export default function PatientDashboard() {
             setMedications={setMedications}
           />
         )}
-        {activeTab === 'LabResults' && (
-          <LabResults labResults={initialLabResults} />
-        )}
+        {activeTab === 'Labs' && <LabResults labResults={initialLabResults} />}
       </div>
-      <nav>
-        <Navbar activeTab={activeTab} setActiveTab={setActiveTab} />
-      </nav>
+      <Navbar activeTab={activeTab} setActiveTab={setActiveTab} />
     </section>
   );
 }
