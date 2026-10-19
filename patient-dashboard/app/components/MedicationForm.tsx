@@ -1,5 +1,5 @@
 // Util Imports
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 
 // Shared Imports
 import type {
@@ -13,7 +13,6 @@ import Button from './Button';
 // Medication Form Props
 type MedicationFormProps = {
   medicationToEdit: MedicationFormObj | null;
-  isModalOpen: boolean;
   onSave: (medicationObj: MedicationFormObj) => void; // handleFormSubmit from MedicationManager
   onClose: () => void;
 };
@@ -21,26 +20,24 @@ type MedicationFormProps = {
 export default function MedicationForm({
   medicationToEdit,
   onSave,
-  isModalOpen,
+
   onClose,
 }: MedicationFormProps) {
   // State Variables
-  const [name, setName] = useState<string>('');
-  const [dosage, setDosage] = useState<string>('');
-  const [frequency, setFrequency] = useState<string>('');
-  const [prescribedBy, setPrescribedBy] = useState<string>('');
-  const [startDate, setStartDate] = useState<string>('');
-  const [status, setStatus] = useState<MedStatus>('active');
-
-  // Effects
-  useEffect(() => {
-    setName(medicationToEdit?.name ?? '');
-    setDosage(medicationToEdit?.dosage ?? '');
-    setFrequency(medicationToEdit?.frequency ?? '');
-    setPrescribedBy(medicationToEdit?.prescribedBy ?? '');
-    setStartDate(medicationToEdit?.startDate ?? '');
-    setStatus(medicationToEdit?.status ?? 'active');
-  }, [medicationToEdit, isModalOpen]);
+  const [name, setName] = useState<string>(medicationToEdit?.name ?? '');
+  const [dosage, setDosage] = useState<string>(medicationToEdit?.dosage ?? '');
+  const [frequency, setFrequency] = useState<string>(
+    medicationToEdit?.frequency ?? ''
+  );
+  const [prescribedBy, setPrescribedBy] = useState<string>(
+    medicationToEdit?.prescribedBy ?? ''
+  );
+  const [startDate, setStartDate] = useState<string>(
+    medicationToEdit?.startDate ?? ''
+  );
+  const [status, setStatus] = useState<MedStatus>(
+    medicationToEdit?.status ?? 'active'
+  );
 
   // Event Handlers
   function handleSubmit(e: React.SubmitEvent<HTMLFormElement>) {

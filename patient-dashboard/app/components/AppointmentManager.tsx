@@ -216,12 +216,13 @@ export default function AppointmentManager({
       )}
 
       <Modal dialogRef={dialogRef} onClose={handleModalClose}>
-        <AppointmentForm
-          appointmentToEdit={appointmentToEdit}
-          onSave={handleFormSubmit}
-          isModalOpen={isModalOpen}
-          onClose={handleModalClose}
-        />
+        {isModalOpen && (
+          <AppointmentForm
+            appointmentToEdit={appointmentToEdit}
+            onSave={handleFormSubmit}
+            onClose={handleModalClose}
+          />
+        )}
       </Modal>
     </div>
   );

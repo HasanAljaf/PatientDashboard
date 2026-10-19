@@ -1,5 +1,5 @@
 // Util Imports
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 
 // Shared Imports
 import type {
@@ -14,33 +14,31 @@ import Button from './Button';
 type AppointmentFormProps = {
   appointmentToEdit: AppointmentFormObj | null;
   onSave: (appointmentObj: AppointmentFormObj) => void; // handleFormSubmit from AppointmentManager
-  isModalOpen: boolean;
+
   onClose: () => void;
 };
 
 export default function AppointmentForm({
   appointmentToEdit,
   onSave,
-  isModalOpen,
+
   onClose,
 }: AppointmentFormProps) {
   // Form Input States
-  const [provider, setProvider] = useState<string>('');
-  const [specialty, setSpecialty] = useState<string>('');
-  const [date, setDate] = useState<string>('');
-  const [time, setTime] = useState<string>('');
-  const [location, setLocation] = useState<string>('');
-  const [status, setStatus] = useState<ApptStatus>('upcoming');
-
-  // Effects - syncing appointmentToEdit with form fields
-  useEffect(() => {
-    setProvider(appointmentToEdit?.provider ?? '');
-    setSpecialty(appointmentToEdit?.specialty ?? '');
-    setDate(appointmentToEdit?.date ?? '');
-    setTime(appointmentToEdit?.time ?? '');
-    setLocation(appointmentToEdit?.location ?? '');
-    setStatus(appointmentToEdit?.status ?? 'upcoming');
-  }, [appointmentToEdit, isModalOpen]);
+  const [provider, setProvider] = useState<string>(
+    appointmentToEdit?.provider ?? ''
+  );
+  const [specialty, setSpecialty] = useState<string>(
+    appointmentToEdit?.specialty ?? ''
+  );
+  const [date, setDate] = useState<string>(appointmentToEdit?.date ?? '');
+  const [time, setTime] = useState<string>(appointmentToEdit?.time ?? '');
+  const [location, setLocation] = useState<string>(
+    appointmentToEdit?.location ?? ''
+  );
+  const [status, setStatus] = useState<ApptStatus>(
+    appointmentToEdit?.status ?? 'upcoming'
+  );
 
   // Event Handlers
   function handleSubmit(e: React.SubmitEvent<HTMLFormElement>) {

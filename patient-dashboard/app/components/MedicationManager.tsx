@@ -213,12 +213,13 @@ export default function MedicationManager({
       )}
 
       <Modal dialogRef={dialogRef} onClose={handleModalClose}>
-        <MedicationForm
-          medicationToEdit={medicationToEdit}
-          isModalOpen={isModalOpen}
-          onSave={handleFormSubmit}
-          onClose={handleModalClose}
-        />
+        {isModalOpen && (
+          <MedicationForm
+            medicationToEdit={medicationToEdit}
+            onSave={handleFormSubmit}
+            onClose={handleModalClose}
+          />
+        )}
       </Modal>
     </div>
   );
