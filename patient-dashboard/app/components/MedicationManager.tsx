@@ -122,52 +122,93 @@ export default function MedicationManager({
           </ul>
 
           {/* Desktop view: hidden below md */}
-          <table className="hidden md:table">
-            {/* table header */}
-            <thead>
-              <tr>
-                <th>Name</th>
-                <th>Dosage</th>
-                <th>Frequency</th>
-                <th>Prescriber</th>
-                <th>Start Date</th>
-                <th>Status</th>
-              </tr>
-            </thead>
-            {/* table body */}
-            <tbody>
-              {medications.map((m) => (
-                <tr key={m.id}>
-                  <td>{m.name}</td>
-                  <td>{m.dosage}</td>
-                  <td>{m.frequency}</td>
-                  <td>{m.prescribedBy}</td>
-                  <td>{m.startDate}</td>
-                  <td>
-                    <StatusBadge status={m.status} />
-                  </td>
-                  <td>
-                    <Button
-                      aria-label={`Edit medication for ${m.name}`}
-                      onClick={() => handleEditClick(m.id)}
-                      variant="secondary"
-                    >
-                      Edit
-                    </Button>
-                  </td>
-                  <td>
-                    <Button
-                      aria-label={`Delete medication for ${m.name}`}
-                      onClick={() => handleDeleteClick(m.id)}
-                      variant="destructive"
-                    >
-                      Delete
-                    </Button>
-                  </td>
+          <div className="hidden md:block overflow-x-auto rounded-2xl bg-white shadow-md">
+            <table className="w-full text-sm">
+              {/* table header */}
+              <thead className="bg-gray-50">
+                <tr>
+                  <th
+                    className="px-4 py-3 text-left text-xs font-medium text-gray-500"
+                    scope="col"
+                  >
+                    Name
+                  </th>
+                  <th
+                    className="px-4 py-3 text-left text-xs font-medium text-gray-500"
+                    scope="col"
+                  >
+                    Dosage
+                  </th>
+                  <th
+                    className="px-4 py-3 text-left text-xs font-medium text-gray-500"
+                    scope="col"
+                  >
+                    Frequency
+                  </th>
+                  <th
+                    className="px-4 py-3 text-left text-xs font-medium text-gray-500"
+                    scope="col"
+                  >
+                    Prescriber
+                  </th>
+                  <th
+                    className="px-4 py-3 text-left text-xs font-medium text-gray-500"
+                    scope="col"
+                  >
+                    Start Date
+                  </th>
+                  <th
+                    className="px-4 py-3 text-left text-xs font-medium text-gray-500"
+                    scope="col"
+                  >
+                    Status
+                  </th>
+                  <th
+                    className="px-4 py-3 text-right text-xs font-medium text-gray-500"
+                    scope="col"
+                  >
+                    Actions
+                  </th>
                 </tr>
-              ))}
-            </tbody>
-          </table>
+              </thead>
+              {/* table body */}
+              <tbody>
+                {medications.map((m) => (
+                  <tr
+                    className="border-t border-gray-100 hover:bg-gray-50"
+                    key={m.id}
+                  >
+                    <td className="px-4 py-3">{m.name}</td>
+                    <td className="px-4 py-3">{m.dosage}</td>
+                    <td className="px-4 py-3">{m.frequency}</td>
+                    <td className="px-4 py-3">{m.prescribedBy}</td>
+                    <td className="px-4 py-3">{m.startDate}</td>
+                    <td className="px-4 py-3">
+                      <StatusBadge status={m.status} />
+                    </td>
+                    <td className="px-4 py-3">
+                      <div className="flex justify-end gap-2">
+                        <Button
+                          aria-label={`Edit medication for ${m.name}`}
+                          onClick={() => handleEditClick(m.id)}
+                          variant="secondary"
+                        >
+                          Edit
+                        </Button>
+                        <Button
+                          aria-label={`Delete medication for ${m.name}`}
+                          onClick={() => handleDeleteClick(m.id)}
+                          variant="destructive"
+                        >
+                          Delete
+                        </Button>
+                      </div>
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
         </>
       )}
 
