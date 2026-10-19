@@ -53,86 +53,92 @@ export default function MedicationForm({
   }
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form className="flex flex-col gap-4" onSubmit={handleSubmit}>
       {/* Form Heading */}
-      <h2>Medication Form</h2>
-      <p>
+      <h2 className="text-lg font-medium">Medication Form</h2>
+      <p className="text-sm text-gray-500">
         Fill out this form to {medicationToEdit === null ? 'add' : 'edit'}{' '}
         medication
       </p>
 
       {/* Field Grouping */}
-      <fieldset>
-        <legend>Medication Information</legend>
+      <fieldset className="flex flex-col gap-3">
+        <legend className="sr-only">Medication Information</legend>
 
-        <label>
-          name
+        <label className="flex flex-col gap-1 text-sm font-medium">
+          Name
           <input
+            className="min-h-11 rounded-lg border border-gray-300 bg-white px-3 text-base font-normal focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-teal"
             onChange={(e) => setName(e.target.value)}
             value={name}
             type="text"
             required
           />
         </label>
-        <label>
-          dosage
+        <label className="flex flex-col gap-1 text-sm font-medium">
+          Dosage
           <input
+            className="min-h-11 rounded-lg border border-gray-300 bg-white px-3 text-base font-normal focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-teal"
             onChange={(e) => setDosage(e.target.value)}
             value={dosage}
             type="text"
             required
           />
         </label>
-        <label>
-          frequency
+        <label className="flex flex-col gap-1 text-sm font-medium">
+          Frequency
           <input
+            className="min-h-11 rounded-lg border border-gray-300 bg-white px-3 text-base font-normal focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-teal"
             onChange={(e) => setFrequency(e.target.value)}
             value={frequency}
             type="text"
             required
           />
         </label>
-        <label>
-          prescriber
+        <label className="flex flex-col gap-1 text-sm font-medium">
+          Prescribed By
           <input
+            className="min-h-11 rounded-lg border border-gray-300 bg-white px-3 text-base font-normal focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-teal"
             onChange={(e) => setPrescribedBy(e.target.value)}
             value={prescribedBy}
             type="text"
             required
           />
         </label>
-        <label>
-          start date
+        <label className="flex flex-col gap-1 text-sm font-medium">
+          Start Date
           <input
+            className="min-h-11 rounded-lg border border-gray-300 bg-white px-3 text-base font-normal focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-teal"
             onChange={(e) => setStartDate(e.target.value)}
             value={startDate}
             type="date"
             required
           />
         </label>
-        <label>
-          Select status
+        <label className="flex flex-col gap-1 text-sm font-medium">
+          Status
           <select
+            className="min-h-11 rounded-lg border border-gray-300 bg-white px-3 text-base font-normal focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-teal"
             name="status"
             value={status}
             onChange={(e) => setStatus(e.target.value as MedStatus)}
           >
-            <option value="active">active</option>
-            <option value="completed">completed</option>
-            <option value="cancelled">cancelled</option>
+            <option value="active">Active</option>
+            <option value="completed">Completed</option>
+            <option value="cancelled">Cancelled</option>
           </select>
         </label>
-
-        {/* Form Submit */}
-        <Button variant="primary" type="submit">
-          {medicationToEdit === null ? 'Add' : 'Save'}
-        </Button>
-
+      </fieldset>
+      <div className="flex justify-end gap-2">
         {/* Cancel/Close Form */}
         <Button onClick={onClose} variant="secondary">
           Cancel
         </Button>
-      </fieldset>
+        {/* Form Submit */}
+        <Button variant="primary" type="submit">
+          {medicationToEdit === null ? 'Add' : 'Save'}
+        </Button>
+      </div>
     </form>
   );
 }

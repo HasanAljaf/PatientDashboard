@@ -7,7 +7,11 @@ type ModalProps = {
 
 export default function Modal({ dialogRef, onClose, children }: ModalProps) {
   return (
-    <dialog ref={dialogRef} onClose={onClose}>
+    <dialog
+      className="m-auto w-11/12 max-w-md rounded-2xl bg-white p-6 shadow-md backdrop:bg-black/40"
+      ref={dialogRef}
+      onClose={onClose}
+    >
       {children}
     </dialog>
   );
